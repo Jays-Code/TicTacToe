@@ -8,23 +8,52 @@ let player1points = 0;
 let player2points = 0;
 let size = 3; //size of playing board, units in width * height.
 
-function drawboard() {
-    let parent = document.getElementById("gameBoard");
+
+let gameGrid = document.getElementById("gameBoard");
+
+function drawBoard() {
     let counter = 1;
 
+    //board clearing
+    while (gameGrid.children.length !== 0) {
+        gameGrid.removeChild(gameGrid.firstChild)
+    }
+
+    //table and row creation
     for (let i = 0; i < 3; i++) {
         let row = document.createElement("tr")
         for (let x = 0; x < 3; x++) {
             let column = document.createElement("td");
             column.innerHTML = counter;
 
+            //onclick event handlers
+            let handler = function (e) {
+                if (activePlayer == 0) {
+                    this.innerHTML = "X";
+                    player1Selections.push(parseInt(this.id));
+                    player1Selections.sort(function(a, b) { return a - b });
+                }
+                else {
+                    this.innerHTML = "O";
+                    player2Selections.push(parseInt(this.id));
+                    player2Selections.sort(function(a, b) { return a - b });
+                }
+             
+            }
+
+
             row.appendChild(column);
         }
-        parent.appendChild(row);
+        gameGrid.appendChild(row);
     }
+    console.log(gameGrid.hasChildNodes)
 }
 
-loadanswers = () => {
+//let gameSpace = drawboard.gameGrid
+//console.log(gameSpace)
+
+
+loadAnswers = () => {
     winningCombos.push([1,2,3]);
     winningCombos.push([4, 5, 6]);
     winningCombos.push([7, 8, 9]);
@@ -36,4 +65,6 @@ loadanswers = () => {
 }
 
 
-drawboard()
+drawBoard()
+
+console.log(gameGrid)

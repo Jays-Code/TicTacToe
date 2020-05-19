@@ -27,34 +27,63 @@ function drawBoard() {
             column.innerHTML = counter;
 
             //onclick event handlers
-            let handler = function (e) {
+            let selectionHandler = function (e) {
                 if (activePlayer == 0) {
                     this.innerHTML = "X";
                     player1Selections.push(parseInt(this.id));
-                    player1Selections.sort(function(a, b) { return a - b });
+                    player1Selections.sort(function (a, b) { return a - b });
                 }
                 else {
                     this.innerHTML = "O";
                     player2Selections.push(parseInt(this.id));
-                    player2Selections.sort(function(a, b) { return a - b });
+                    player2Selections.sort(function (a, b) { return a - b });
                 }
-             
-            }
 
+                //If the conditions met in the checkWin function are satisified, meaning the 
+                //playerNSelection array matches what is in the winningCombos array, we will add 
+                //the points to the winners score. 
+
+                if (checkWin()) {
+                    if (activePlayer == 0) {
+                        player1points++
+                    }
+                    else {
+                        player2points++
+                    }
+                    document.getElementById("player1score").innerHTML = player1points;
+                    document.getElementById("player2score").innerHTML = player2points;
+
+                    //After winnner is declared and awared points, we reset the board and draw a new.
+                    resetBoard();
+                    drawBoard();
+                }
+                else {
+                    if (activePlayer == 0)
+                        activePlayer == 1;
+                    else (activePlayer == 0)
+                    //this.removeEventListener('click', arguments.callee);
+                }
+            };
+
+            column.addEventListener('click', selectionHandler);
 
             row.appendChild(column);
+            counter++
+
         }
         gameGrid.appendChild(row);
     }
-    console.log(gameGrid.hasChildNodes)
+    
 }
+console.log(gameGrid.hasChildNodes)
+
 
 //let gameSpace = drawboard.gameGrid
 //console.log(gameSpace)
 
 
 loadAnswers = () => {
-    winningCombos.push([1,2,3]);
+    winningCombos.push([1, 2, 3]);
     winningCombos.push([4, 5, 6]);
     winningCombos.push([7, 8, 9]);
     winningCombos.push([1, 4, 7]);

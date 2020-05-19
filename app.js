@@ -58,7 +58,7 @@ function drawBoard() {
                     drawBoard();
                 }
                 else {
-                    if (activePlayer == 0)
+                    if (activePlayer == 0) 
                         activePlayer == 1;
                     else (activePlayer == 0)
                     //this.removeEventListener('click', arguments.callee);
@@ -73,9 +73,21 @@ function drawBoard() {
         }
         gameGrid.appendChild(row);
     }
+}
+
+checkWin = () => {
+    let win = false;
+    let playerSelections = new Array();
+    if (activePlayer == 0) {
+        playerSelections == playerSelections    
+    }
+    else (playerSelections == player2Selections)
     
 }
-console.log(gameGrid.hasChildNodes)
+//console.log(Boolean.valueOf(checkWin.win))
+
+
+//console.log(gameGrid.hasChildNodes)
 
 
 //let gameSpace = drawboard.gameGrid
@@ -96,4 +108,4 @@ loadAnswers = () => {
 
 drawBoard()
 
-console.log(gameGrid)
+//console.log(gameGrid)

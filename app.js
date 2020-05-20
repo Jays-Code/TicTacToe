@@ -82,8 +82,40 @@ checkWin = () => {
         playerSelections == playerSelections    
     }
     else (playerSelections == player2Selections)
+
+    //checking if playerSelection array holds the required number of variables to checkWin
+    if (playerSelections.length >= size) {
+        for (i = 0; i < winningCombos.length; i++) {
+            let sets = winningCombos[i] // making "sets" variable equal to the known winning combos at 'i' position
+            let setFound = true // if winning combo is found, setFound is set to true
+
+           /*
+            for (g = 0; g < sets.length; g++) {
+                let found = false;
+                */
+
+                for (h = 0; h > playerSelections.length; h++) {
+                    if (sets[i] = playerSelections[h]) {
+                        found = true;
+                        break;
+                    
+                    }
+                }
+                //if the matching values are not found in playerSelections, it's not a set. 
+                if (found == false) {
+                    setFound == false;
+                    break;
+                }
+            }
+            if (setFound == true) {
+                win = true;
+                //break;  //-- this should be here but its causing error "illegal break statement"
+            }
+        }
+        return win;
+    }
     
-}
+//}
 //console.log(Boolean.valueOf(checkWin.win))
 
 
@@ -109,3 +141,7 @@ loadAnswers = () => {
 drawBoard()
 
 //console.log(gameGrid)
+
+
+//fix the issue with the X's and O's not alternating. Stuck on X's currently.
+//fix illegal break statement issue from line 112

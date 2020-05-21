@@ -32,18 +32,22 @@ function drawBoard() {
                     this.innerHTML = "X";
                     player1Selections.push(parseInt(this.id));
                     player1Selections.sort(function (a, b) { return a - b });
+                    //activePlayer = 1;
+                   
                 }
                 else {
                     this.innerHTML = "O";
                     player2Selections.push(parseInt(this.id));
                     player2Selections.sort(function (a, b) { return a - b });
+                    //activePlayer == 2;
                 }
+                console.log(activePlayer)
 
                 //If the conditions met in the checkWin function are satisified, meaning the 
                 //playerNSelection array matches what is in the winningCombos array, we will add 
                 //the points to the winners score. 
 
-                if (checkWin()) {
+                if (checkWin()) { //runs checkWin function. If conditions are met, runs if statement.
                     if (activePlayer == 0) {
                         player1points++
                     }
@@ -57,10 +61,10 @@ function drawBoard() {
                     resetBoard();
                     drawBoard();
                 }
-                else {
+                else { //if it runs checkWin function and winning condition not met, this is ran.
                     if (activePlayer == 0) 
-                        activePlayer == 1;
-                    else (activePlayer == 0)
+                        activePlayer = 1;
+                    else (activePlayer = 0)
                     //this.removeEventListener('click', arguments.callee);
                 }
             };
@@ -77,6 +81,7 @@ function drawBoard() {
 
 checkWin = () => {
     let win = false;
+    //console.log("checkWin is run")
     let playerSelections = new Array();
     if (activePlayer == 0) {
         playerSelections == playerSelections    
@@ -143,5 +148,4 @@ drawBoard()
 //console.log(gameGrid)
 
 
-//fix the issue with the X's and O's not alternating. Stuck on X's currently.
 //fix illegal break statement issue from line 112

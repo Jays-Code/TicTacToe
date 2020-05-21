@@ -11,6 +11,9 @@ let size = 3; //size of playing board, units in width * height.
 
 let gameGrid = document.getElementById("gameBoard");
 
+
+
+
 function drawBoard() {
     let counter = 1;
 
@@ -24,24 +27,30 @@ function drawBoard() {
         let row = document.createElement("tr")
         for (let x = 0; x < 3; x++) {
             let column = document.createElement("td");
-            column.innerHTML = "-";
+            column.innerHTML = counter;
 
             //onclick event handlers
             let selectionHandler = function (e) {
                 if (activePlayer == 0) {
-                    this.innerHTML = "X";
-                    player1Selections.push(parseInt(this.id));
+                    
+                    player1Selections.push(parseInt(this.innerHTML));
                     player1Selections.sort(function (a, b) { return a - b });
-                    //activePlayer = 1;
+                    console.log(this.innerHTML)
+                    player1Selections.push()
+                    this.innerHTML = "X";
+                    //console.log(this.innerHTML) //output is the innerHTML of box I clicked
+                    //console.log(this.id) //outputs blank line, big problem
+                    console.log(player1Selections)
+                    //console.log(player1Selections)
                    
                 }
                 else {
                     this.innerHTML = "O";
                     player2Selections.push(parseInt(this.id));
                     player2Selections.sort(function (a, b) { return a - b });
-                    //activePlayer == 2;
+                  
                 }
-                console.log(activePlayer)
+                //console.log(activePlayer)
 
                 //If the conditions met in the checkWin function are satisified, meaning the 
                 //playerNSelection array matches what is in the winningCombos array, we will add 
@@ -56,6 +65,7 @@ function drawBoard() {
                     }
                     document.getElementById("player1score").innerHTML = player1points;
                     document.getElementById("player2score").innerHTML = player2points;
+                    //console.log(player1Selections + player2Selections)
 
                     //After winnner is declared and awared points, we reset the board and draw a new.
                     resetBoard();
@@ -85,10 +95,12 @@ function drawBoard() {
     }
 }
 
+let playerSelections = new Array();
+
 checkWin = () => {
     let win = false;
     console.log("checkWin is run")
-    let playerSelections = new Array();
+    //let playerSelections = new Array();
     if (activePlayer == 0) {
         playerSelections = playerSelections    
     }
@@ -109,8 +121,9 @@ checkWin = () => {
                 for (h = 0; h > playerSelections.length; h++) {
                     if (sets[i] = playerSelections[h]) {
                         found = true;
+                        console.log(winningCombos)
                         break;
-                    
+                        
                     }
                 }
                 //if the matching values are not found in playerSelections, it's not a set. 
@@ -124,8 +137,8 @@ checkWin = () => {
                 //break;  //-- this should be here but its causing error "illegal break statement"
             }
             //console.log(setFound)
-            console.log(winningCombos)
-            console.log(player1Selections)
+            
+            //console.log(player1Selections)
         }
         return win;
     }
@@ -172,9 +185,15 @@ loadAnswers = () => {
 
 drawBoard()
 
-//console.log(gameGrid)
 
+
+
+
+//after 6 selections no matter what, the game resets. 
+//something in my checkWin statement looks to be triggering this
 
 //fix illegal break statement issue from line 112
 
 //highlight the selected player properly
+
+//hide counter placeholders on board 1-9 and only reveal innerHtml when player selects

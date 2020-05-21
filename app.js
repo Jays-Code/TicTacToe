@@ -116,7 +116,8 @@ checkWin = () => {
             let sets = winningCombos[i] // making "sets" variable equal to the known winning combos at 'i' position
             let setFound = true // if winning combo is found, setFound is set to true
 
-
+            console.log("hi")
+            
             
             for (g = 0; g < sets.length; g++) {
                 let found = false;
@@ -125,9 +126,11 @@ checkWin = () => {
             
                 for (h = 0; h < playerSelections.length; h++) {
                     console.log("for loop with H variable is run")
-                    if (sets[i] = playerSelections[h]) {
+                    //console.log(sets[i])
+                    console.log(playerSelections[h])
+                    if (sets[g] == playerSelections[h]) {
                         found = true;
-                        //console.log(winningCombos)
+                        console.log(found)
                         break;
 
                     }
@@ -194,7 +197,9 @@ drawBoard()
 
 
 
-
+//found variable is being recognized correctly in checkWin, but where is the code
+//for action to occur once found = true
+//Also, notice player 2 is awarded winner no matter what after 6 moves.
 
 //after 6 selections no matter what, the game resets. 
 //something in my checkWin statement looks to be triggering this

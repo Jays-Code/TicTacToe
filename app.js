@@ -24,7 +24,7 @@ function drawBoard() {
         let row = document.createElement("tr")
         for (let x = 0; x < 3; x++) {
             let column = document.createElement("td");
-            column.innerHTML = counter;
+            column.innerHTML = "-";
 
             //onclick event handlers
             let selectionHandler = function (e) {
@@ -61,6 +61,12 @@ function drawBoard() {
                     resetBoard();
                     drawBoard();
                 }
+                else if (player1Selections + player2Selections === 9) {
+                    //display some message that this is a draw
+                    resetBoard();
+                    drawBoard();
+                
+                }
                 else { //if it runs checkWin function and winning condition not met, this is ran.
                     if (activePlayer == 0) 
                         activePlayer = 1;
@@ -81,18 +87,19 @@ function drawBoard() {
 
 checkWin = () => {
     let win = false;
-    //console.log("checkWin is run")
+    console.log("checkWin is run")
     let playerSelections = new Array();
     if (activePlayer == 0) {
-        playerSelections == playerSelections    
+        playerSelections = playerSelections    
     }
-    else (playerSelections == player2Selections)
+    else (playerSelections = player2Selections)
 
     //checking if playerSelection array holds the required number of variables to checkWin
     if (playerSelections.length >= size) {
         for (i = 0; i < winningCombos.length; i++) {
             let sets = winningCombos[i] // making "sets" variable equal to the known winning combos at 'i' position
             let setFound = true // if winning combo is found, setFound is set to true
+            
 
            /*
             for (g = 0; g < sets.length; g++) {
@@ -112,10 +119,13 @@ checkWin = () => {
                     break;
                 }
             }
-            if (setFound == true) {
+            if (setFound = true) {  // was setFound == true (probably should be)
                 win = true;
                 //break;  //-- this should be here but its causing error "illegal break statement"
             }
+            //console.log(setFound)
+            console.log(winningCombos)
+            console.log(player1Selections)
         }
         return win;
     }
@@ -129,6 +139,23 @@ checkWin = () => {
 
 //let gameSpace = drawboard.gameGrid
 //console.log(gameSpace)
+
+getPlayerElement = (idFromHtml) => {
+    //we are setting whatever is returned in the elem variable equal to the html id parameter
+    let elem = document.getElementById(idFromHtml) 
+    return elem
+}
+
+
+resetBoard = () => {
+    activePlayer = 0;
+    player1Selections =  new Array()
+    player2Selections = new Array()
+    playerSelections = new Array()
+    //Make player 1 the selected player again
+    //getPlayerElement("player1score").classList.add('selected')
+    //getPlayerElement("player2score").classList.remove('selected')
+}
 
 
 loadAnswers = () => {
@@ -149,3 +176,5 @@ drawBoard()
 
 
 //fix illegal break statement issue from line 112
+
+//highlight the selected player properly

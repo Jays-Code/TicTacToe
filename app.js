@@ -32,23 +32,25 @@ function drawBoard() {
             //onclick event handlers
             let selectionHandler = function (e) {
                 if (activePlayer == 0) {
-                    
+
                     player1Selections.push(parseInt(this.innerHTML));
                     player1Selections.sort(function (a, b) { return a - b });
                     console.log(this.innerHTML)
-                    player1Selections.push()
+                    //player1Selections.push()
                     this.innerHTML = "X";
                     //console.log(this.innerHTML) //output is the innerHTML of box I clicked
                     //console.log(this.id) //outputs blank line, big problem
                     console.log(player1Selections)
                     //console.log(player1Selections)
-                   
+
                 }
                 else {
-                    this.innerHTML = "O";
-                    player2Selections.push(parseInt(this.id));
+
+                    player2Selections.push(parseInt(this.innerHTML));
                     player2Selections.sort(function (a, b) { return a - b });
-                  
+
+                    this.innerHTML = "O";
+                    console.log(player2Selections)
                 }
                 //console.log(activePlayer)
 
@@ -75,10 +77,10 @@ function drawBoard() {
                     //display some message that this is a draw
                     resetBoard();
                     drawBoard();
-                
+
                 }
                 else { //if it runs checkWin function and winning condition not met, this is ran.
-                    if (activePlayer == 0) 
+                    if (activePlayer == 0)
                         activePlayer = 1;
                     else (activePlayer = 0)
                     //this.removeEventListener('click', arguments.callee);
@@ -93,6 +95,8 @@ function drawBoard() {
         }
         gameGrid.appendChild(row);
     }
+
+    loadAnswers();
 }
 
 let playerSelections = new Array();
@@ -102,7 +106,7 @@ checkWin = () => {
     console.log("checkWin is run")
     //let playerSelections = new Array();
     if (activePlayer == 0) {
-        playerSelections = playerSelections    
+        playerSelections = playerSelections
     }
     else (playerSelections = player2Selections)
 
@@ -111,19 +115,18 @@ checkWin = () => {
         for (i = 0; i < winningCombos.length; i++) {
             let sets = winningCombos[i] // making "sets" variable equal to the known winning combos at 'i' position
             let setFound = true // if winning combo is found, setFound is set to true
-            
 
-           /*
+
+            
             for (g = 0; g < sets.length; g++) {
                 let found = false;
-                */
-
+                console.log(winningCombos)
                 for (h = 0; h > playerSelections.length; h++) {
                     if (sets[i] = playerSelections[h]) {
                         found = true;
-                        console.log(winningCombos)
+                        //console.log(winningCombos)
                         break;
-                        
+
                     }
                 }
                 //if the matching values are not found in playerSelections, it's not a set. 
@@ -132,17 +135,18 @@ checkWin = () => {
                     break;
                 }
             }
-            if (setFound = true) {  // was setFound == true (probably should be)
-                win = true;
-                //break;  //-- this should be here but its causing error "illegal break statement"
-            }
-            //console.log(setFound)
-            
-            //console.log(player1Selections)
         }
-        return win;
+        if (setFound = true) {  // was setFound == true (probably should be)
+            win = true;
+            //break;  //-- this should be here but its causing error "illegal break statement"
+        }
+        //console.log(setFound)
+
+        //console.log(player1Selections)
     }
-    
+    return win;
+}
+
 //}
 //console.log(Boolean.valueOf(checkWin.win))
 
@@ -155,14 +159,14 @@ checkWin = () => {
 
 getPlayerElement = (idFromHtml) => {
     //we are setting whatever is returned in the elem variable equal to the html id parameter
-    let elem = document.getElementById(idFromHtml) 
+    let elem = document.getElementById(idFromHtml)
     return elem
 }
 
 
 resetBoard = () => {
     activePlayer = 0;
-    player1Selections =  new Array()
+    player1Selections = new Array()
     player2Selections = new Array()
     playerSelections = new Array()
     //Make player 1 the selected player again

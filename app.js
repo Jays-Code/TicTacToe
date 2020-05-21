@@ -44,7 +44,7 @@ function drawBoard() {
                     //console.log(player1Selections)
 
                 }
-                else {
+                else { 
 
                     player2Selections.push(parseInt(this.innerHTML));
                     player2Selections.sort(function (a, b) { return a - b });
@@ -120,8 +120,11 @@ checkWin = () => {
             
             for (g = 0; g < sets.length; g++) {
                 let found = false;
-                console.log(winningCombos)
-                for (h = 0; h > playerSelections.length; h++) {
+                console.log(playerSelections.length)
+                console.log("hello")
+            
+                for (h = 0; h < playerSelections.length; h++) {
+                    console.log("for loop with H variable is run")
                     if (sets[i] = playerSelections[h]) {
                         found = true;
                         //console.log(winningCombos)

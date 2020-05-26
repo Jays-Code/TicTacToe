@@ -117,8 +117,9 @@ checkWin = () => {
             let sets = winningCombos[i] // making "sets" variable equal to the known winning combos at 'i' position
             let setFound = true // if winning combo is found, setFound is set to true
 
-            let found = false;
+            
             for (g = 0; g < sets.length; g++) {
+                let found = false;
 
                 
                 //console.log(playerSelections.length)
@@ -126,8 +127,8 @@ checkWin = () => {
 
                 for (h = 0; h < playerSelections.length; h++) {
                     console.log("for loop with H variable is run")
-                    console.log(i)
-                    console.log(sets)
+                    //console.log(i)
+                    //console.log(sets)
                     //console.log(playerSelections[h+1])
                     console.log(sets[g])
                     console.log(playerSelections[h])
@@ -147,32 +148,33 @@ checkWin = () => {
                         
                         */
 
-                        setFound = true;
-                        console.log("matches appear: setFound = true")
+                        //setFound = true;
+                        console.log("matches appear so found = true")
                         
                         //console.log(found)
                         break;
                     }
                 }
+                if (found == false) {
+                    //console.log(found)
+                    setFound = false;
+                    break;
+                }
             }
             //if the matching values are not found in playerSelections, it's not a set. 
-            if (found == false) {
-                console.log(found)
-                setFound = false;
-                break;
-            }
+            
 
             //console.log(setFound)
 
 
             if (setFound == true) {  // was setFound == true (probably should be)
-                console.log("in the end, setFound is true")
+                //console.log("in the end, setFound is true")
                 win = true;
                 //console.log(playerSelections) - logs the selections of player after winner
 
                 //console.log(win)
 
-                // break;  //-- this should be here but its causing error "illegal break statement"
+                 break;  //-- this should be here but its causing error "illegal break statement"
             }
         }
     }
@@ -181,6 +183,7 @@ checkWin = () => {
     //console.log(player1Selections)
 
     return win;
+    console.log(win)
 }
 
 //}
@@ -198,6 +201,7 @@ getPlayerElement = (idFromHtml) => {
     let elem = document.getElementById(idFromHtml)
     return elem
 }
+
 
 
 resetBoard = () => {
@@ -242,3 +246,13 @@ drawBoard()
 //highlight the selected player properly
 
 //hide counter placeholders on board 1-9 and only reveal innerHtml when player selects
+
+/* ------------ NEW NOTES BELOW
+
+Currently When player 2 wins, it is recognized, board reset, score incremented properly.
+However when player 1 wins, nothing happens and it is not recognized.
+
+
+
+*/
+ 

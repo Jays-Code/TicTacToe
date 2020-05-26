@@ -100,14 +100,14 @@ console.log("activePlayer is:" + activePlayer)
     loadAnswers();
 }
 
-let playerSelections = new Array();
+//let playerSelections = new Array();
 
 checkWin = () => {
     let win = false;
     //console.log("checkWin is run")
-    //let playerSelections = new Array();
+    let playerSelections = new Array();
     if (activePlayer == 0) {
-        player1Selections = playerSelections
+        playerSelections = player1Selections
     }
     else (playerSelections = player2Selections)
 
@@ -250,5 +250,6 @@ However when player 1 wins, nothing happens and it is not recognized.
 
 Player 2 is working perfectly all throughout
 player1Selections are not being counted properly, view console logs
+--currently player1selections array is not persisting, only last selection is there
 */
  

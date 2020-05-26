@@ -119,19 +119,20 @@ checkWin = () => {
 
             
             for (g = 0; g < sets.length; g++) {
-                let found = false;
+                let found = false; //found refers to one card
 
                 
                 //console.log(playerSelections.length)
                 //console.log(setFound)
 
                 for (h = 0; h < playerSelections.length; h++) {
-                    console.log("for loop with H variable is run")
+                    //console.log("for loop with H variable is run")
                     //console.log(i)
                     //console.log(sets)
                     //console.log(playerSelections[h+1])
                     console.log(sets[g])
-                    console.log(playerSelections[h])
+                    console.log("id of activePlayer: " + activePlayer)
+                    console.log(playerSelections[h]) // currently always showing 2nd players choices
                     if (sets[g] == playerSelections[h]) {
                         
                         //sets[i + 1] == playerSelections[h + 1] &&
@@ -149,14 +150,14 @@ checkWin = () => {
                         */
 
                         //setFound = true;
-                        console.log("matches appear so found = true")
+                        console.log("match appears so found = true")
                         
                         //console.log(found)
                         break;
                     }
                 }
                 if (found == false) {
-                    //console.log(found)
+                    console.log(found)
                     setFound = false;
                     break;
                 }
@@ -172,7 +173,7 @@ checkWin = () => {
                 win = true;
                 //console.log(playerSelections) - logs the selections of player after winner
 
-                //console.log(win)
+                console.log(win)
 
                  break;  //-- this should be here but its causing error "illegal break statement"
             }
@@ -252,6 +253,8 @@ drawBoard()
 Currently When player 2 wins, it is recognized, board reset, score incremented properly.
 However when player 1 wins, nothing happens and it is not recognized.
 
+--refer to note line ~134 regarding playerSelections
+(player 2 is stuck as activePlayer during the checkWin statement)
 
 
 */

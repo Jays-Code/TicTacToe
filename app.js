@@ -35,22 +35,22 @@ function drawBoard() {
 
                     player1Selections.push(parseInt(this.innerHTML));
                     player1Selections.sort(function (a, b) { return a - b });
-                    console.log(this.innerHTML)
+                    console.log("player 1 chooses " + this.innerHTML)
                     //player1Selections.push()
                     this.innerHTML = "X";
                     //console.log(this.innerHTML) //output is the innerHTML of box I clicked
                     //console.log(this.id) //outputs blank line, big problem
-                    console.log(player1Selections)
+                    console.log("So far, player 1 has chosen: " + player1Selections)
                     //console.log(player1Selections)
 
                 }
-                else { 
+                else {
 
                     player2Selections.push(parseInt(this.innerHTML));
                     player2Selections.sort(function (a, b) { return a - b });
-
+                    console.log("player 2 chooses " + this.innerHTML)
                     this.innerHTML = "O";
-                    console.log(player2Selections)
+                    console.log("So far, player 2 has chosen: " + player2Selections)
                 }
                 //console.log(activePlayer)
 
@@ -74,6 +74,7 @@ function drawBoard() {
                     drawBoard();
                 }
                 else if (player1Selections + player2Selections === 9) {
+                    console.log("game thinks player1Selections + player2Selections === 9")
                     //display some message that this is a draw
                     resetBoard();
                     drawBoard();
@@ -83,7 +84,7 @@ function drawBoard() {
                     if (activePlayer == 0)
                         activePlayer = 1;
                     else (activePlayer = 0)
-                    //this.removeEventListener('click', arguments.callee);
+                    this.removeEventListener('click', arguments.callee);
                 }
             };
 
@@ -103,7 +104,7 @@ let playerSelections = new Array();
 
 checkWin = () => {
     let win = false;
-    console.log("checkWin is run")
+    //console.log("checkWin is run")
     //let playerSelections = new Array();
     if (activePlayer == 0) {
         playerSelections = playerSelections
@@ -116,40 +117,69 @@ checkWin = () => {
             let sets = winningCombos[i] // making "sets" variable equal to the known winning combos at 'i' position
             let setFound = true // if winning combo is found, setFound is set to true
 
-            console.log("hi")
-            
-            
+            let found = false;
             for (g = 0; g < sets.length; g++) {
-                let found = false;
-                console.log(playerSelections.length)
-                console.log("hello")
-            
+
+                
+                //console.log(playerSelections.length)
+                //console.log(setFound)
+
                 for (h = 0; h < playerSelections.length; h++) {
                     console.log("for loop with H variable is run")
-                    //console.log(sets[i])
+                    console.log(i)
+                    console.log(sets)
+                    //console.log(playerSelections[h+1])
+                    console.log(sets[g])
                     console.log(playerSelections[h])
                     if (sets[g] == playerSelections[h]) {
-                        found = true;
-                        console.log(found)
-                        break;
+                        
+                        //sets[i + 1] == playerSelections[h + 1] &&
+                        //sets[i + 2] == playerSelections[h + 2]) {
 
+                        found = true;
+                        /*
+
+                        console.log(setFound)
+
+                        console.log(sets)
+                        console.log(sets[g + 1])
+                        console.log(playerSelections[h+1])
+                        
+                        */
+
+                        setFound = true;
+                        console.log("matches appear: setFound = true")
+                        
+                        //console.log(found)
+                        break;
                     }
                 }
-                //if the matching values are not found in playerSelections, it's not a set. 
-                if (found == false) {
-                    setFound == false;
-                    break;
-                }
+            }
+            //if the matching values are not found in playerSelections, it's not a set. 
+            if (found == false) {
+                console.log(found)
+                setFound = false;
+                break;
+            }
+
+            //console.log(setFound)
+
+
+            if (setFound == true) {  // was setFound == true (probably should be)
+                console.log("in the end, setFound is true")
+                win = true;
+                //console.log(playerSelections) - logs the selections of player after winner
+
+                //console.log(win)
+
+                // break;  //-- this should be here but its causing error "illegal break statement"
             }
         }
-        if (setFound = true) {  // was setFound == true (probably should be)
-            win = true;
-            //break;  //-- this should be here but its causing error "illegal break statement"
-        }
-        //console.log(setFound)
-
-        //console.log(player1Selections)
     }
+    //console.log(setFound)
+
+    //console.log(player1Selections)
+
     return win;
 }
 
@@ -196,6 +226,9 @@ loadAnswers = () => {
 drawBoard()
 
 
+//setFound and win are showing true even when false on the board
+// ^^^ changed setFound to default false at variable creation, logic gate changes to true.
+//error is somewhere in your setFound and found statements
 
 //found variable is being recognized correctly in checkWin, but where is the code
 //for action to occur once found = true

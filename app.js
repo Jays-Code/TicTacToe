@@ -32,7 +32,7 @@ function drawBoard() {
             //onclick event handlers
             let selectionHandler = function (e) {
                 if (activePlayer == 0) {
-
+console.log("activePlayer is:" + activePlayer)
                     player1Selections.push(parseInt(this.innerHTML));
                     player1Selections.sort(function (a, b) { return a - b });
                     console.log("player 1 chooses " + this.innerHTML)
@@ -59,12 +59,12 @@ function drawBoard() {
                 //the points to the winners score. 
 
                 if (checkWin()) { //runs checkWin function. If conditions are met, runs if statement.
-                    if (activePlayer == 0) {
-                        player1points++
-                    }
-                    else {
+                    if (activePlayer == 0) 
+                        player1points++;
+                    
+                    else 
                         player2points++
-                    }
+                    
                     document.getElementById("player1score").innerHTML = player1points;
                     document.getElementById("player2score").innerHTML = player2points;
                     //console.log(player1Selections + player2Selections)
@@ -73,7 +73,7 @@ function drawBoard() {
                     resetBoard();
                     drawBoard();
                 }
-                else if (player1Selections + player2Selections === 9) {
+                else if (player2Selections.length + player1Selections.length == 9) {
                     console.log("game thinks player1Selections + player2Selections === 9")
                     //display some message that this is a draw
                     resetBoard();
@@ -107,7 +107,7 @@ checkWin = () => {
     //console.log("checkWin is run")
     //let playerSelections = new Array();
     if (activePlayer == 0) {
-        playerSelections = playerSelections
+        player1Selections = playerSelections
     }
     else (playerSelections = player2Selections)
 
@@ -231,18 +231,8 @@ loadAnswers = () => {
 drawBoard()
 
 
-//setFound and win are showing true even when false on the board
-// ^^^ changed setFound to default false at variable creation, logic gate changes to true.
-//error is somewhere in your setFound and found statements
 
-//found variable is being recognized correctly in checkWin, but where is the code
-//for action to occur once found = true
-//Also, notice player 2 is awarded winner no matter what after 6 moves.
 
-//after 6 selections no matter what, the game resets. 
-//something in my checkWin statement looks to be triggering this
-
-//fix illegal break statement issue from line 112
 
 //highlight the selected player properly
 
@@ -256,6 +246,9 @@ However when player 1 wins, nothing happens and it is not recognized.
 --refer to note line ~134 regarding playerSelections
 (player 2 is stuck as activePlayer during the checkWin statement)
 
+---- latest notes
 
+Player 2 is working perfectly all throughout
+player1Selections are not being counted properly, view console logs
 */
  

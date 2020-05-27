@@ -38,6 +38,10 @@ function drawBoard() {
                     console.log("player 1 chooses " + this.innerHTML)
                     this.innerHTML = "X";
                     console.log("So far, player 1 has chosen: " + player1Selections)
+                    getPlayerElement("player1score").classList.remove('selected')
+                    getPlayerElement("player2score").classList.add('selected')
+                    
+                    
 
 
                 }
@@ -48,6 +52,8 @@ function drawBoard() {
                     console.log("player 2 chooses " + this.innerHTML)
                     this.innerHTML = "O";
                     console.log("So far, player 2 has chosen: " + player2Selections)
+                    getPlayerElement("player2score").classList.remove('selected')
+                    getPlayerElement("player1score").classList.add('selected')
                 }
                
 
@@ -81,7 +87,7 @@ function drawBoard() {
                     if (activePlayer == 0)
                         activePlayer = 1;
                     else (activePlayer = 0)
-                    this.removeEventListener('click', arguments.callee);
+                    //this.removeEventListener('click', arguments.callee);
                 }
             };
 
@@ -180,8 +186,8 @@ resetBoard = () => {
     player2Selections = new Array()
     playerSelections = new Array()
     //Make player 1 the selected player again
-    //getPlayerElement("player1score").classList.add('selected')
-    //getPlayerElement("player2score").classList.remove('selected')
+    getPlayerElement("player1score").classList.add('selected')
+    getPlayerElement("player2score").classList.remove('selected')
 }
 
 

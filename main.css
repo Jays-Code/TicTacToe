@@ -26,10 +26,10 @@ body{
     border:solid 10px #333;
 }
 
-.game .gameTitle
+.canvas #gameTitle
 {
-    background:#222;
-    color:#fff;
+    background:rgb(34, 34, 34);
+    color:rgb(206, 13, 13);
     padding: 10px;
     text-align:center;
 }
@@ -39,12 +39,12 @@ body{
     float:left;
     text-align:center;
     width: 25%;
-    color: red;
+    color: rgb(90, 29, 131);
 }
 
 .canvas .player .selected
 {
-    border-bottom:solid 4px #00fa9a;
+    border-bottom:solid 4px rgb(103, 195, 248)
 }
 
 .tictactoe-board

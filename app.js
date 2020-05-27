@@ -19,6 +19,7 @@ function drawBoard() {
 
     //board clearing
     while (gameGrid.children.length !== 0) {
+        //note the existing gameGrid is being removed here and new one is built.
         gameGrid.removeChild(gameGrid.firstChild)
     }
 
@@ -27,35 +28,36 @@ function drawBoard() {
         let row = document.createElement("tr")
         for (let x = 0; x < 3; x++) {
             let column = document.createElement("td");
-            column.innerHTML = counter;
+            column.innerHTML = "♥"
+            column.id = counter;
 
             //onclick event handlers
             let selectionHandler = function (e) {
                 if (activePlayer == 0) {
                     console.log("activePlayer is:" + activePlayer)
-                    player1Selections.push(parseInt(this.innerHTML));
+                    player1Selections.push(parseInt(this.id));
                     player1Selections.sort(function (a, b) { return a - b });
-                    console.log("player 1 chooses " + this.innerHTML)
+                    console.log("player 1 chooses " + column.id)
                     this.innerHTML = "X";
                     console.log("So far, player 1 has chosen: " + player1Selections)
                     getPlayerElement("player1score").classList.remove('selected')
                     getPlayerElement("player2score").classList.add('selected')
-                    
-                    
+
+
 
 
                 }
                 else {
 
-                    player2Selections.push(parseInt(this.innerHTML));
+                    player2Selections.push(parseInt(this.id));
                     player2Selections.sort(function (a, b) { return a - b });
-                    console.log("player 2 chooses " + this.innerHTML)
+                    console.log("player 2 chooses " + column.id)
                     this.innerHTML = "O";
                     console.log("So far, player 2 has chosen: " + player2Selections)
                     getPlayerElement("player2score").classList.remove('selected')
                     getPlayerElement("player1score").classList.add('selected')
                 }
-               
+
 
                 //If the conditions met in the checkWin function are satisified, meaning the 
                 //playerNSelection array matches what is in the winningCombos array, we will add 
@@ -70,7 +72,7 @@ function drawBoard() {
 
                     document.getElementById("player1score").innerHTML = player1points;
                     document.getElementById("player2score").innerHTML = player2points;
-                
+
 
                     //After winnner is declared and awared points, we reset the board and draw a new.
                     resetBoard();
@@ -126,10 +128,10 @@ checkWin = () => {
 
 
                 for (h = 0; h < playerSelections.length; h++) {
-                   
+
                     console.log(sets[g])
                     console.log("id of activePlayer: " + activePlayer)
-                    console.log(playerSelections[h]) 
+                    console.log(playerSelections[h])
                     if (sets[g] == playerSelections[h]) {
 
                         found = true;
@@ -159,7 +161,7 @@ checkWin = () => {
             }
         }
     }
- 
+
 
     return win;
     console.log(win)
@@ -209,6 +211,10 @@ drawBoard()
 
 
 
-//highlight the selected player properly
 
-//hide counter placeholders on board 1-9 and only reveal innerHtml when player selects
+
+//add a modal that says which player wins, then when they click "re-match", board resets.
+
+
+//Use ⚡ for one of the players tokens. 
+//misc unicode symbols https://jrgraphix.net/r/Unicode/2600-26FF

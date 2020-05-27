@@ -32,16 +32,13 @@ function drawBoard() {
             //onclick event handlers
             let selectionHandler = function (e) {
                 if (activePlayer == 0) {
-console.log("activePlayer is:" + activePlayer)
+                    console.log("activePlayer is:" + activePlayer)
                     player1Selections.push(parseInt(this.innerHTML));
                     player1Selections.sort(function (a, b) { return a - b });
                     console.log("player 1 chooses " + this.innerHTML)
-                    //player1Selections.push()
                     this.innerHTML = "X";
-                    //console.log(this.innerHTML) //output is the innerHTML of box I clicked
-                    //console.log(this.id) //outputs blank line, big problem
                     console.log("So far, player 1 has chosen: " + player1Selections)
-                    //console.log(player1Selections)
+
 
                 }
                 else {
@@ -52,29 +49,29 @@ console.log("activePlayer is:" + activePlayer)
                     this.innerHTML = "O";
                     console.log("So far, player 2 has chosen: " + player2Selections)
                 }
-                //console.log(activePlayer)
+               
 
                 //If the conditions met in the checkWin function are satisified, meaning the 
                 //playerNSelection array matches what is in the winningCombos array, we will add 
                 //the points to the winners score. 
 
                 if (checkWin()) { //runs checkWin function. If conditions are met, runs if statement.
-                    if (activePlayer == 0) 
+                    if (activePlayer == 0)
                         player1points++;
-                    
-                    else 
+
+                    else
                         player2points++
-                    
+
                     document.getElementById("player1score").innerHTML = player1points;
                     document.getElementById("player2score").innerHTML = player2points;
-                    //console.log(player1Selections + player2Selections)
+                
 
                     //After winnner is declared and awared points, we reset the board and draw a new.
                     resetBoard();
                     drawBoard();
                 }
                 else if (player2Selections.length + player1Selections.length == 9) {
-                    console.log("game thinks player1Selections + player2Selections === 9")
+                    console.log("A draw has occured. Board reset!")
                     //display some message that this is a draw
                     resetBoard();
                     drawBoard();
@@ -117,42 +114,19 @@ checkWin = () => {
             let sets = winningCombos[i] // making "sets" variable equal to the known winning combos at 'i' position
             let setFound = true // if winning combo is found, setFound is set to true
 
-            
+
             for (g = 0; g < sets.length; g++) {
                 let found = false; //found refers to one card
 
-                
-                //console.log(playerSelections.length)
-                //console.log(setFound)
 
                 for (h = 0; h < playerSelections.length; h++) {
-                    //console.log("for loop with H variable is run")
-                    //console.log(i)
-                    //console.log(sets)
-                    //console.log(playerSelections[h+1])
+                   
                     console.log(sets[g])
                     console.log("id of activePlayer: " + activePlayer)
-                    console.log(playerSelections[h]) // currently always showing 2nd players choices
+                    console.log(playerSelections[h]) 
                     if (sets[g] == playerSelections[h]) {
-                        
-                        //sets[i + 1] == playerSelections[h + 1] &&
-                        //sets[i + 2] == playerSelections[h + 2]) {
 
                         found = true;
-                        /*
-
-                        console.log(setFound)
-
-                        console.log(sets)
-                        console.log(sets[g + 1])
-                        console.log(playerSelections[h+1])
-                        
-                        */
-
-                        //setFound = true;
-                        console.log("match appears so found = true")
-                        
-                        //console.log(found)
                         break;
                     }
                 }
@@ -163,7 +137,7 @@ checkWin = () => {
                 }
             }
             //if the matching values are not found in playerSelections, it's not a set. 
-            
+
 
             //console.log(setFound)
 
@@ -175,13 +149,11 @@ checkWin = () => {
 
                 console.log(win)
 
-                 break;  //-- this should be here but its causing error "illegal break statement"
+                break;  //-- this should be here but its causing error "illegal break statement"
             }
         }
     }
-    //console.log(setFound)
-
-    //console.log(player1Selections)
+ 
 
     return win;
     console.log(win)
@@ -193,9 +165,6 @@ checkWin = () => {
 
 //console.log(gameGrid.hasChildNodes)
 
-
-//let gameSpace = drawboard.gameGrid
-//console.log(gameSpace)
 
 getPlayerElement = (idFromHtml) => {
     //we are setting whatever is returned in the elem variable equal to the html id parameter
@@ -237,19 +206,3 @@ drawBoard()
 //highlight the selected player properly
 
 //hide counter placeholders on board 1-9 and only reveal innerHtml when player selects
-
-/* ------------ NEW NOTES BELOW
-
-Currently When player 2 wins, it is recognized, board reset, score incremented properly.
-However when player 1 wins, nothing happens and it is not recognized.
-
---refer to note line ~134 regarding playerSelections
-(player 2 is stuck as activePlayer during the checkWin statement)
-
----- latest notes
-
-Player 2 is working perfectly all throughout
-player1Selections are not being counted properly, view console logs
---currently player1selections array is not persisting, only last selection is there
-*/
- 

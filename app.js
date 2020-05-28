@@ -76,12 +76,14 @@ function drawBoard() {
 
                     //After winnner is declared and awared points, we reset the board and draw a new.
                     winnerShown();
+                    //removeModal();
                     drawBoard();
                 }
                 else if (player2Selections.length + player1Selections.length == 9) {
                     console.log("A draw has occured. Board reset!")
                     //display some message that this is a draw
                     winnerShown();
+                    //removeModal();
                     drawBoard();
 
                 }
@@ -171,8 +173,8 @@ winnerShown = () => {
     //show modal for player that won
     let showModal = () => {
         let getModal = document.getElementsByClassName("modal");
-        getModal[0].style.display="block"
-        console.log(getModal[0].style.display) // comes back undefined, but getModal doesn't
+        getModal[0].style.display = "block"
+        console.log("modal is triggered")
         return getModal
         /*
         theModal = getModal
@@ -180,17 +182,14 @@ winnerShown = () => {
         return theModal
         */
     }
-    showModal();
-    
-    /*
-    let displayModal(theModal.style.display = "block");
-    let makeVisible = showModal();
-    console.log(makeVisible)
 
-    displayModal();
-    */
+    //removing the modal
+    removeModal = () => {
+        let getModal = document.getElementsByClassName("modal")
+        getModal[0].style.display = "none"
+        console.log("modal removal is triggered")
+    }
 
-    console.log("modal is triggered")
     resetBoard = () => {
         activePlayer = 0;
         player1Selections = new Array()
@@ -201,8 +200,10 @@ winnerShown = () => {
         getPlayerElement("player2score").classList.remove('selected')
 
     }
+    showModal();
     resetBoard();
-
+    setTimeout(function(){removeModal(); }, 3000);
+    
 }
 
 

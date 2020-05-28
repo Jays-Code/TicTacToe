@@ -81,7 +81,14 @@ body{
 
 .modal 
 {
-    color: green;
+    /*
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    */
+    margin: 0 auto;
+    background-color: green;
     padding:30px;
     display:none;
+    border: 10vw 10vh red;
 }

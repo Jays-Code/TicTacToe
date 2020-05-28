@@ -81,13 +81,13 @@ body{
 
 .modal 
 {
-    /*
+    
     position: fixed;
-    top: 50%;
-    left: 50%;
-    */
+    top: 70%;
+    left: 70%;
+    
     margin: 0 auto;
-    background-color: green;
+    background-color: rgb(140, 192, 140);
     padding:30px;
     display:none;
     border: 10vw 10vh red;

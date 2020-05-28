@@ -122,9 +122,10 @@ checkTaken = () => {
 
 */
 
-checkWin = () => {
+checkWin = (playerSelectionsContainer) => {
     let win = false;
     let playerSelections = new Array();
+    playerSelectionsContainer = playerSelections
     if (activePlayer == 0) {
         playerSelections = player1Selections
     }
@@ -168,7 +169,10 @@ checkWin = () => {
 
 
     return win;
+    
 }
+//console.log("these are playerSelectionsContainer: " + checkWin(playerSelectionsContainer));
+
 
 
 
@@ -254,11 +258,13 @@ drawBoard()
 
 // noises for each player when they click a box
 
-//board shakes or flashes whhen a draw is reached or player wins
+//board shakes or flashes when a draw is reached or player wins
 
 //Best: find some css to make the innerHtml of the boxes pulsate 
 //(grow 25% and shrink once every few seconds, maybe color mutate too)
 
 //make best of 3 5 or 7 menu show on page load;
 
-//make the starting player switch every game
+//make the starting player switch every game (or math.random for 'coin flip')
+
+//make the whole board expand in size with css animation upon load after welcome screen

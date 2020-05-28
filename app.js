@@ -171,8 +171,8 @@ winnerShown = () => {
     //show modal for player that won
     let showModal = () => {
         let getModal = document.getElementsByClassName("modal");
-        getModal.style.display="block"
-        console.log(getModal.style) // comes back undefined, but getModal doesn't
+        getModal[0].style.display="block"
+        console.log(getModal[0].style.display) // comes back undefined, but getModal doesn't
         return getModal
         /*
         theModal = getModal

@@ -78,3 +78,10 @@ body{
 {
     clear:both;
 }
+
+.modal 
+{
+    color: green;
+    padding:30px;
+    display:none;
+}

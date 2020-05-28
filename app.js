@@ -169,6 +169,27 @@ getPlayerElement = (idFromHtml) => {
 
 winnerShown = () => {
     //show modal for player that won
+    let showModal = () => {
+        let getModal = document.getElementsByClassName("modal");
+        getModal.style.display="block"
+        console.log(getModal.style) // comes back undefined, but getModal doesn't
+        return getModal
+        /*
+        theModal = getModal
+        console.log(theModal)
+        return theModal
+        */
+    }
+    showModal();
+    
+    /*
+    let displayModal(theModal.style.display = "block");
+    let makeVisible = showModal();
+    console.log(makeVisible)
+
+    displayModal();
+    */
+
     console.log("modal is triggered")
     resetBoard = () => {
         activePlayer = 0;

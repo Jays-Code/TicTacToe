@@ -34,10 +34,9 @@ function drawBoard() {
             //onclick event handlers
             let selectionHandler = function (e) {
                 if (activePlayer == 0) {
-                    console.log("activePlayer is:" + activePlayer)
                     player1Selections.push(parseInt(this.id));
                     player1Selections.sort(function (a, b) { return a - b });
-                    console.log("player 1 chooses " + column.id)
+                    console.log("Player 1 chooses " + column.id)
                     this.innerHTML = "X";
                     console.log("So far, player 1 has chosen: " + player1Selections)
                     getPlayerElement("player1score").classList.remove('selected')
@@ -51,7 +50,7 @@ function drawBoard() {
 
                     player2Selections.push(parseInt(this.id));
                     player2Selections.sort(function (a, b) { return a - b });
-                    console.log("player 2 chooses " + column.id)
+                    console.log("Player 2 chooses " + column.id)
                     this.innerHTML = "O";
                     console.log("So far, player 2 has chosen: " + player2Selections)
                     getPlayerElement("player2score").classList.remove('selected')
@@ -107,7 +106,21 @@ function drawBoard() {
     loadAnswers();
 }
 
+//Logic for checking if box is already taken
+/*
+checkTaken = () => {
+    //takes the latest playerSelection and checks if that number is in any index of 
+    //either the player1Selections or player2Selections
 
+    //if [value] exists in any index of the array{
+        //reject selection
+        //make setTimeout modal appear that states:
+        //"The opponent has already taken this box! Where else can I go... (thinking emoji)"
+    }
+    //break
+}
+
+*/
 
 checkWin = () => {
     let win = false;
@@ -130,9 +143,7 @@ checkWin = () => {
 
                 for (h = 0; h < playerSelections.length; h++) {
 
-                    console.log(sets[g])
-                    console.log("id of activePlayer: " + activePlayer)
-                    console.log(playerSelections[h])
+                
                     if (sets[g] == playerSelections[h]) {
 
                         found = true;
@@ -140,7 +151,6 @@ checkWin = () => {
                     }
                 }
                 if (found == false) {
-                    console.log(found)
                     setFound = false;
                     break;
                 }
@@ -174,7 +184,14 @@ winnerShown = () => {
     let showModal = () => {
         let getModal = document.getElementsByClassName("modal");
         getModal[0].style.display = "block"
-        console.log("modal is triggered")
+        console.log("modal is triggered");
+        if (activePlayer == 0) {
+            getModal[0].innerHTML = ("Player 1 has won! Board reset");
+        }
+        else {
+            getModal[0].innerHTML = ("Player 2 has won! Board reset");
+        }
+        console.log(activePlayer)
         return getModal
         /*
         theModal = getModal
@@ -187,7 +204,7 @@ winnerShown = () => {
     removeModal = () => {
         let getModal = document.getElementsByClassName("modal")
         getModal[0].style.display = "none"
-        console.log("modal removal is triggered")
+        console.log("modal is removed")
     }
 
     resetBoard = () => {
@@ -202,7 +219,7 @@ winnerShown = () => {
     }
     showModal();
     resetBoard();
-    setTimeout(function(){removeModal(); }, 3000);
+    setTimeout(function(){removeModal(); }, 5000);
     
 }
 
@@ -238,3 +255,10 @@ drawBoard()
 // noises for each player when they click a box
 
 //board shakes or flashes whhen a draw is reached or player wins
+
+//Best: find some css to make the innerHtml of the boxes pulsate 
+//(grow 25% and shrink once every few seconds, maybe color mutate too)
+
+//make best of 3 5 or 7 menu show on page load;
+
+//make the starting player switch every game

@@ -75,13 +75,13 @@ function drawBoard() {
 
 
                     //After winnner is declared and awared points, we reset the board and draw a new.
-                    resetBoard();
+                    winnerShown();
                     drawBoard();
                 }
                 else if (player2Selections.length + player1Selections.length == 9) {
                     console.log("A draw has occured. Board reset!")
                     //display some message that this is a draw
-                    resetBoard();
+                    winnerShown();
                     drawBoard();
 
                 }
@@ -105,11 +105,10 @@ function drawBoard() {
     loadAnswers();
 }
 
-//let playerSelections = new Array();
+
 
 checkWin = () => {
     let win = false;
-    //console.log("checkWin is run")
     let playerSelections = new Array();
     if (activePlayer == 0) {
         playerSelections = player1Selections
@@ -147,31 +146,18 @@ checkWin = () => {
             //if the matching values are not found in playerSelections, it's not a set. 
 
 
-            //console.log(setFound)
-
-
-            if (setFound == true) {  // was setFound == true (probably should be)
-                //console.log("in the end, setFound is true")
+            if (setFound == true) {
                 win = true;
-                //console.log(playerSelections) - logs the selections of player after winner
-
-                console.log(win)
-
-                break;  //-- this should be here but its causing error "illegal break statement"
+                console.log("Is there a win: " + win)
+                break;
             }
         }
     }
 
 
     return win;
-    console.log(win)
 }
 
-//}
-//console.log(Boolean.valueOf(checkWin.win))
-
-
-//console.log(gameGrid.hasChildNodes)
 
 
 getPlayerElement = (idFromHtml) => {
@@ -181,15 +167,21 @@ getPlayerElement = (idFromHtml) => {
 }
 
 
+winnerShown = () => {
+    //show modal for player that won
+    console.log("modal is triggered")
+    resetBoard = () => {
+        activePlayer = 0;
+        player1Selections = new Array()
+        player2Selections = new Array()
+        playerSelections = new Array()
+        //Make player 1 the selected player again
+        getPlayerElement("player1score").classList.add('selected')
+        getPlayerElement("player2score").classList.remove('selected')
 
-resetBoard = () => {
-    activePlayer = 0;
-    player1Selections = new Array()
-    player2Selections = new Array()
-    playerSelections = new Array()
-    //Make player 1 the selected player again
-    getPlayerElement("player1score").classList.add('selected')
-    getPlayerElement("player2score").classList.remove('selected')
+    }
+    resetBoard();
+
 }
 
 
@@ -218,3 +210,9 @@ drawBoard()
 
 //Use ⚡ for one of the players tokens. 
 //misc unicode symbols https://jrgraphix.net/r/Unicode/2600-26FF
+
+//css for text fade in when player clicks a box
+
+// noises for each player when they click a box
+
+//board shakes or flashes whhen a draw is reached or player wins

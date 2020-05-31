@@ -122,11 +122,38 @@ body{
     padding:30px;
     display:none;
     border: 10vw 10vh red;
-    animation: moveModal 8s 0s;
+    animation: moveModal 8s 0s, fadeOut 8s 0s;
+     
+}
+    @keyframes fadeOut {
+        0% {
+            opacity: 0;
+        }
+        16% {
+           opacity: 1;
+        }
+        84% {
+           opacity: 1;
+        }
+        100% {
+           opacity: 0;
+        }
+    }
+    
+    .message {
+        width: 400px;
+        margin: 0 auto;
+        opacity: 0;
+        text-align: center;
+       -webkit-animation: fadeInOut 6s;
+       animation: fadeInOut 6s;
+
+
 }
   
   @keyframes moveModal {
     0%   {left: 0vw;}
+    80%  {left: 50vw}
     100% {left: 100vw;}
 }
 

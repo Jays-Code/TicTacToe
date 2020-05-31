@@ -32,6 +32,7 @@ function drawBoard() {
     while (gameGrid.children.length !== 0) {
         //note the existing gameGrid is being removed here and new one is built.
         gameGrid.removeChild(gameGrid.firstChild)
+        getModal[0].style.display = "block"
     }
 
     //table and row creation
@@ -96,7 +97,7 @@ function drawBoard() {
                     drawBoard();
                 }
                 else if (player2Selections.length + player1Selections.length == 9) {
-                    console.log("A draw has occured. Board reset! BOOOOOO")
+                    console.log("A draw has occured. Board reset!")
                     gameCount++
                     //display some message that this is a draw
                     showModal();
@@ -206,6 +207,7 @@ getPlayerElement = (idFromHtml) => {
 }
 
 let getModal = document.getElementsByClassName("modal");
+getModal[0].style.display = "block"
 getModal[0].classList.add["modal"]
 //show modal for player that won
 let showModal = () => {
@@ -229,9 +231,16 @@ let showModal = () => {
     }
     
     if (activePlayer == 0 && !checkWin()) {
+        
+        /*
+        if (player1points + player2points == 0 && gameCount > 0) {
+            console.log("gameCount: " + gameCount)
+            getModal[0].style.display = "block"
+            */
+        getModal[0].style.display = "block"
         getModal[0].innerHTML = ("A draw has occured. Board reset!")
-        //getModal[0].style.display = "block"
-        console.log("issa tie bihh")
+        
+       
     }
     else if
     (activePlayer == 0)
@@ -330,3 +339,9 @@ drawBoard()
 //modal for draw not coming up
 
 //if preGame = true, make modal not come up. if preGame = false, make modal come up.
+
+
+
+//use CSS to make opacity of modal go to 0 after 8 seconds (keyframe animation time)
+
+

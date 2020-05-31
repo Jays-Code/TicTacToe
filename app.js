@@ -190,10 +190,10 @@ winnerShown = () => {
         getModal[0].style.display = "block"
         console.log("modal is triggered");
         if (activePlayer == 0) {
-            getModal[0].innerHTML = ("Player 1 has won! Board reset");
+            getModal[0].innerHTML = ("Player 1 has won!");
         }
         else {
-            getModal[0].innerHTML = ("Player 2 has won! Board reset");
+            getModal[0].innerHTML = ("Player 2 has won!");
         }
         console.log(activePlayer)
         return getModal

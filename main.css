@@ -1,6 +1,25 @@
 body{
     margin:0px;
     padding:0px;
+    background-color:  #112957;
+    -webkit-tap-highlight-color: transparent; 
+    
+
+        
+        
+
+
+
+   
+      
+      
+      
+     
+  
+      
+      
+      
+      
 }
 
 .canvas td
@@ -12,6 +31,17 @@ body{
     font-size:40pt;
     border-radius:10px;
     box-sizing:border-box;
+    background-image: linear-gradient(to top, #1e3c72 0%, #1e3c72 1%, #b83726 100%);
+    position: relative;
+    animation: makeItMove 2s 0s;
+}
+  
+  @keyframes makeItMove {
+    0%   {top: 0px;}
+    25%  {top: 6px;}
+    50%  {top: 1px}
+    75% {top: 4px;}
+    100% {top: 0px;}
 }
 
 .canvas td:hover
@@ -92,7 +122,14 @@ body{
     padding:30px;
     display:none;
     border: 10vw 10vh red;
+    animation: moveModal 5s 0s;
 }
+  
+  @keyframes moveModal {
+    0%   {left: 0vw;}
+    100% {left: 100vw;}
+}
+
 
 
 /*
@@ -136,7 +173,134 @@ body
     100% {opacity:1;}
 }
 
-.gameBoard 
+.canvas #gameBoard 
 {
+    color:rgb(31, 26, 32);
+    overflow:hidden;
+    transition:transform 0.3s ease-out; // note that we're transitioning transform, not height!
+    //height:auto;
+    transform:scaleY(1); // implicit, but good to specify explicitly
+    transform-origin:top; // keep the top of the element in the same place. this is optional.
+    transform:scaleY(0); // *squish*
+    //margin:0 auto;
+    //padding:10vh 10vw; 
+    font-family: arial;
+    font-weight: bold;
+    border:6px solid rgb(140,63,53, 0.7);
+    border-radius:32px;
+    box-sizing:border-box;
+      
+      //This stuff doesn't matter!
+      
 
+
+
+     
+        
+        
+      
+
+       
+        
+      
+        max-width:300px;
+        
+
+        
+    
+        --webkit-appearance:none;
+        font-size:18px;
+        
+       
+        margin:15px auto;
+        padding:15px;
+        cursor:pointer;
+        
+        transition:box-shadow 0.2s ease-out;
+        
+       
+      }
+
+
+
+
+
+
+
+
+
+
+
+      @import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	outline: none;
+	user-select: none;
 }
+
+:focus {
+	outline: none;
+}
+
+
+
+	display: flex;
+	padding: .5rem;
+	border-radius: 64px;
+	box-shadow: 0 0 120px 40px rgba(255, 255, 255, .5);
+	background: rgba(255, 255, 255, .85);
+	transition: all ease-out .8s;
+
+
+:hover {
+	box-shadow: 0 0 12px 3px rgba(255, 255, 255, .4);
+}
+
+
+	width: 0;
+	height: 0;
+	padding: 0;
+	border: 0;
+	border-top-left-radius: 30px;
+	border-bottom-left-radius: 30px;
+	box-shadow: 0 0 5px inset rgba(0, 0, 0, .8);
+	opacity: 0;
+	outline: none;
+	background: #FFF;
+	font-family: 'Lato', sans-serif;
+	font-size: 1.5rem;
+	font-weight: bold;
+	letter-spacing: 2px;
+    transition: all linear .2s;
+    
+
+
+
+
+
+
+
+
+    
+        
+      
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

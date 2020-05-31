@@ -21,7 +21,7 @@ function drawBoard() {
     else {
         getModal[0].style.display = "none"
     }
-    
+
     let counter = 1;
 
     //board clearing
@@ -83,7 +83,7 @@ function drawBoard() {
                     //After winnner is declared and awared points, we reset the board and draw a new.
                     showModal();
                     winnerShown();
-                    
+
                     //removeModal();
                     drawBoard();
                 }
@@ -92,7 +92,7 @@ function drawBoard() {
                     //display some message that this is a draw
                     showModal();
                     winnerShown();
-                    
+
                     //removeModal();
                     drawBoard();
 
@@ -101,7 +101,7 @@ function drawBoard() {
                     if (activePlayer == 0)
                         activePlayer = 1;
                     else (activePlayer = 0)
-                    //this.removeEventListener('click', arguments.callee);
+                    this.removeEventListener('click', arguments.callee);
                 }
             };
 
@@ -117,25 +117,14 @@ function drawBoard() {
     loadAnswers();
 }
 
-//Logic for checking if box is already taken
-/*
-checkTaken = () => {
-    //takes the latest playerSelection and checks if that number is in any index of 
-    //either the player1Selections or player2Selections
 
-    //if [value] exists in any index of the array{
-        //reject selection
-        //make setTimeout modal appear that states:
-        //"The opponent has already taken this box! Where else can I go... (thinking emoji)"
-    }
-    //break
-}
 
-*/
+
+let playerSelections = new Array();
 
 checkWin = (playerSelectionsContainer) => {
     let win = false;
-    let playerSelections = new Array();
+
     playerSelectionsContainer = playerSelections
     if (activePlayer == 0) {
         playerSelections = player1Selections
@@ -155,7 +144,7 @@ checkWin = (playerSelectionsContainer) => {
 
                 for (h = 0; h < playerSelections.length; h++) {
 
-                
+
                     if (sets[g] == playerSelections[h]) {
 
                         found = true;
@@ -180,7 +169,7 @@ checkWin = (playerSelectionsContainer) => {
 
 
     return win;
-    
+
 }
 
 
@@ -197,19 +186,19 @@ let getModal = document.getElementsByClassName("modal");
 getModal[0].classList.add["modal"]
 //show modal for player that won
 let showModal = () => {
-        
+
     //let getModalContent = document.getElementsByClassName("modalContent")
     //console.log(getModal)
     getModal[0].classList.add["modal"]
     //getModalContent[0].classList.add("modalContent")
-    
-    
+
+
     getModal[0].style.display = "block"
     console.log("modal is triggered");
     if (activePlayer == 0) {
         getModal[0].innerHTML = ("Player 1 has won!");
         //console.log(getModalContent[0].innerHTML)
-    console.log(getModal[0].innerHTML)
+        console.log(getModal[0].innerHTML)
     }
     else {
         getModal[0].innerHTML = ("Player 2 has won!");
@@ -224,7 +213,7 @@ let showModal = () => {
 }
 
 winnerShown = () => {
-    
+
 
     //removing the modal
     removeModal = () => {
@@ -234,7 +223,7 @@ winnerShown = () => {
             //getModal[0].classList.remove("modal")
             console.log("modal is removed")
         }
-        
+
     }
 
     resetBoard = () => {
@@ -250,10 +239,10 @@ winnerShown = () => {
     drawBoard()
     //showModal();
     resetBoard();
-    setTimeout(function(){removeModal(); }, 8000);
-    
+    setTimeout(function () { removeModal(); }, 8000);
+
     //removeModal();
-    
+
 }
 
 
@@ -276,9 +265,6 @@ drawBoard()
 
 
 
-
-
-//add a modal that says which player wins, then when they click "re-match", board resets.
 
 
 //Use ⚡ for one of the players tokens. 

@@ -15,6 +15,13 @@ let gameGrid = document.getElementById("gameBoard");
 
 
 function drawBoard() {
+    if (player1points + player2points > 0) {
+        getModal[0].style.display = "block"
+    }
+    else {
+        getModal[0].style.display = "none"
+    }
+    
     let counter = 1;
 
     //board clearing
@@ -74,14 +81,18 @@ function drawBoard() {
 
 
                     //After winnner is declared and awared points, we reset the board and draw a new.
+                    showModal();
                     winnerShown();
+                    
                     //removeModal();
                     drawBoard();
                 }
                 else if (player2Selections.length + player1Selections.length == 9) {
                     console.log("A draw has occured. Board reset!")
                     //display some message that this is a draw
+                    showModal();
                     winnerShown();
+                    
                     //removeModal();
                     drawBoard();
 
@@ -182,33 +193,48 @@ getPlayerElement = (idFromHtml) => {
     return elem
 }
 
+let getModal = document.getElementsByClassName("modal");
+getModal[0].classList.add["modal"]
+//show modal for player that won
+let showModal = () => {
+        
+    //let getModalContent = document.getElementsByClassName("modalContent")
+    //console.log(getModal)
+    getModal[0].classList.add["modal"]
+    //getModalContent[0].classList.add("modalContent")
+    
+    
+    getModal[0].style.display = "block"
+    console.log("modal is triggered");
+    if (activePlayer == 0) {
+        getModal[0].innerHTML = ("Player 1 has won!");
+        //console.log(getModalContent[0].innerHTML)
+    console.log(getModal[0].innerHTML)
+    }
+    else {
+        getModal[0].innerHTML = ("Player 2 has won!");
+    }
+    console.log(activePlayer)
+    return getModal
+    /*
+    theModal = getModal
+    console.log(theModal)
+    return theModal
+    */
+}
 
 winnerShown = () => {
-    //show modal for player that won
-    let showModal = () => {
-        let getModal = document.getElementsByClassName("modal");
-        getModal[0].style.display = "block"
-        console.log("modal is triggered");
-        if (activePlayer == 0) {
-            getModal[0].innerHTML = ("Player 1 has won!");
-        }
-        else {
-            getModal[0].innerHTML = ("Player 2 has won!");
-        }
-        console.log(activePlayer)
-        return getModal
-        /*
-        theModal = getModal
-        console.log(theModal)
-        return theModal
-        */
-    }
+    
 
     //removing the modal
     removeModal = () => {
-        let getModal = document.getElementsByClassName("modal")
-        getModal[0].style.display = "none"
-        console.log("modal is removed")
+        //let getModal = document.getElementsByClassName("modal")
+        if (player1points + player2points > 0) {
+            getModal[0].style.display = "none"
+            //getModal[0].classList.remove("modal")
+            console.log("modal is removed")
+        }
+        
     }
 
     resetBoard = () => {
@@ -221,9 +247,12 @@ winnerShown = () => {
         getPlayerElement("player2score").classList.remove('selected')
 
     }
-    showModal();
+    drawBoard()
+    //showModal();
     resetBoard();
-    setTimeout(function(){removeModal(); }, 5000);
+    setTimeout(function(){removeModal(); }, 8000);
+    
+    //removeModal();
     
 }
 
@@ -241,6 +270,7 @@ loadAnswers = () => {
 
 
 drawBoard()
+
 
 
 
@@ -268,3 +298,6 @@ drawBoard()
 //make the starting player switch every game (or math.random for 'coin flip')
 
 //make the whole board expand in size with css animation upon load after welcome screen
+
+//resetBoard() handles the logic for the resetting players hands, but not the innerHtml.
+//find how to make the board stay for 2 seconds before reset on win.

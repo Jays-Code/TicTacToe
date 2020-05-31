@@ -13,14 +13,18 @@ let gameGrid = document.getElementById("gameBoard");
 
 
 
+let gameCount = 0;
+
 
 function drawBoard() {
-    if (player1points + player2points > 0) {
+    if (player1points + player2points > 0 && gameCount > 0) {
+        console.log("gameCount: " + gameCount)
         getModal[0].style.display = "block"
     }
     else {
         getModal[0].style.display = "none"
     }
+    
 
     let counter = 1;
 
@@ -70,11 +74,15 @@ function drawBoard() {
                 //the points to the winners score. 
 
                 if (checkWin()) { //runs checkWin function. If conditions are met, runs if statement.
-                    if (activePlayer == 0)
+                    if (activePlayer == 0) {
                         player1points++;
+                        gameCount++
+                    }
 
-                    else
+                    else {
                         player2points++
+                        gameCount++
+                    }
 
                     document.getElementById("player1score").innerHTML = player1points;
                     document.getElementById("player2score").innerHTML = player2points;
@@ -88,7 +96,8 @@ function drawBoard() {
                     drawBoard();
                 }
                 else if (player2Selections.length + player1Selections.length == 9) {
-                    console.log("A draw has occured. Board reset!")
+                    console.log("A draw has occured. Board reset! BOOOOOO")
+                    gameCount++
                     //display some message that this is a draw
                     showModal();
                     winnerShown();
@@ -121,9 +130,15 @@ function drawBoard() {
 
 
 let playerSelections = new Array();
+//let preGame = true;
 
 checkWin = (playerSelectionsContainer) => {
     let win = false;
+    /*
+    if (preGame == false) {
+        getModal[0].style.display = "block"
+        console.log('HELLO')
+    }*/
 
     playerSelectionsContainer = playerSelections
     if (activePlayer == 0) {
@@ -160,6 +175,8 @@ checkWin = (playerSelectionsContainer) => {
 
 
             if (setFound == true) {
+                preGame = false;
+                //console.log(preGame) //correctly showing as false, need to return it
                 win = true;
                 console.log("Is there a win: " + win)
                 break;
@@ -168,9 +185,15 @@ checkWin = (playerSelectionsContainer) => {
     }
 
 
+    //return [win, preGame]
     return win;
 
 }
+/*
+let returnedStuff = checkWin();
+const win = returnedStuff[0]
+preGame = returnedStuff[1]
+*/
 
 
 
@@ -186,6 +209,7 @@ let getModal = document.getElementsByClassName("modal");
 getModal[0].classList.add["modal"]
 //show modal for player that won
 let showModal = () => {
+    
 
     //let getModalContent = document.getElementsByClassName("modalContent")
     //console.log(getModal)
@@ -193,17 +217,32 @@ let showModal = () => {
     //getModalContent[0].classList.add("modalContent")
 
 
+
+
     getModal[0].style.display = "block"
     console.log("modal is triggered");
-    if (activePlayer == 0) {
+    console.log("activePlayer is: " + activePlayer)
+    
+    if (activePlayer == 1) {
+        getModal[0].innerHTML = ("Player 2 has won!");
+        console.log(activePlayer)
+    }
+    
+    if (activePlayer == 0 && !checkWin()) {
+        getModal[0].innerHTML = ("A draw has occured. Board reset!")
+        //getModal[0].style.display = "block"
+        console.log("issa tie bihh")
+    }
+    else if
+    (activePlayer == 0)
+     {
         getModal[0].innerHTML = ("Player 1 has won!");
         //console.log(getModalContent[0].innerHTML)
         console.log(getModal[0].innerHTML)
+        //console.log(activePlayer)
     }
-    else {
-        getModal[0].innerHTML = ("Player 2 has won!");
-    }
-    console.log(activePlayer)
+    
+    
     return getModal
     /*
     theModal = getModal
@@ -287,3 +326,7 @@ drawBoard()
 
 //resetBoard() handles the logic for the resetting players hands, but not the innerHtml.
 //find how to make the board stay for 2 seconds before reset on win.
+
+//modal for draw not coming up
+
+//if preGame = true, make modal not come up. if preGame = false, make modal come up.

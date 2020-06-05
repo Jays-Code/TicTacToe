@@ -106,7 +106,7 @@ function drawBoard() {
                     showModal();
                     winnerShown();
 
-                    //removeModal();
+                    //setTimeout(function () { removeModal(); }, 8000);
                     //drawBoard();
                     setTimeout(function () { drawBoard(); }, 3000);
 
@@ -351,3 +351,9 @@ loadAnswers = () => {
 //remove all setTimeouts if times don't sync up properly.
 
 //https://www.youtube.com/watch?v=4UvWpjSRrm0 CSS gradient morphing animation
+
+
+
+//make a little banner for the bottom of the page that says on the bottom right:
+//"This game is brought to you by Jays-Code[tm]"
+//and the bottom left has a github logo that links to your github

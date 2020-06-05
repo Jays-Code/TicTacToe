@@ -24,8 +24,8 @@ body{
 
 .canvas td
 {
-    width:100px;
-    height:100px;
+    width:10vw;
+    height:8vh;
     border: solid 8px rgba(73, 7, 94, 0.616);
     text-align:center;
     font-size:40pt;
@@ -78,7 +78,7 @@ body{
 {
     border-bottom: double 4px rgb(103, 195, 248)
 }
-
+/*
 .tictactoe-board
 {
     text-align:center;
@@ -104,6 +104,7 @@ body{
     float:left;
     width:20%;
 }
+*/
 
 .clear
 {
@@ -114,15 +115,16 @@ body{
 {
     
     position: fixed;
-    top: 70%;
-    left: 70%;
+    
+    width: 16vw;
     
     margin: 0 auto;
     background-color: rgb(140, 192, 140);
     padding:30px;
     display:none;
     border: 10vw 10vh red;
-    animation: moveModal 8s 0s, fadeOut 8s 0s;
+    animation: moveModal 8s 0s, fadeOut 8s 0s; 
+    animation-fill-mode: forwards;
      
 }
     @keyframes fadeOut {
@@ -134,6 +136,7 @@ body{
         }
         84% {
            opacity: 1;
+           
         }
         100% {
            opacity: 0;
@@ -202,6 +205,7 @@ body
 
 .canvas #gameBoard 
 {
+    height:60vh;
     color:rgb(31, 26, 32);
     overflow:hidden;
     transition:transform 0.3s ease-out; // note that we're transitioning transform, not height!
@@ -216,34 +220,12 @@ body
     border:6px solid rgb(140,63,53, 0.7);
     border-radius:32px;
     box-sizing:border-box;
-      
-      //This stuff doesn't matter!
-      
-
-
-
-     
-        
-        
-      
-
-       
-        
-      
-        max-width:300px;
-        
-
-        
     
-        --webkit-appearance:none;
-        font-size:18px;
-        
-       
-        margin:15px auto;
-        padding:15px;
-        cursor:pointer;
-        
-        transition:box-shadow 0.2s ease-out;
+    font-size:18px;
+    margin:15px auto;
+    padding:15px;
+    cursor:pointer;
+    transition:box-shadow 0.2s ease-out;
         
        
       }
@@ -318,6 +300,7 @@ body
 
 
 
+//modal should be faded out after 8 secs wit css fadeOut animation, but its not working
 
 
 

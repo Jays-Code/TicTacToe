@@ -22,6 +22,7 @@ body{
 
 .canvas td
 {
+    overflow: hidden;
     width:10vw;
     height:8vh;
     //max-width:1vw;
@@ -29,7 +30,10 @@ body{
     border: solid 8px rgba(73, 7, 94, 0.616);
     text-align:center;
     //font-size:360%;
-    font-size:9vh;
+
+    //font-size:9vh;
+    font-size: max(10vh, 10px);
+
     //font-size:40pt;
     border-radius:10px;
     box-sizing:border-box;
@@ -117,6 +121,7 @@ body{
     position: fixed;
     
     width: 16vw;
+    min-width: 130px;
     
     margin: 0 auto;
     background-color: rgb(140, 192, 140);
@@ -206,9 +211,9 @@ body
 .canvas #gameBoard 
 {
     height:60vh;
-    //max-height:30%;
+    max-height:10%;
     color:rgb(31, 26, 32);
-    overflow:hidden;
+    //overflow:hidden;
     transition:transform 0.3s ease-out; // note that we're transitioning transform, not height!
     //height:auto;
     transform:scaleY(1); // implicit, but good to specify explicitly
@@ -305,7 +310,8 @@ body
 //scale properly on your phone
 
 
-
+//current issue: td won't get smaller than the font size; need to implement max
+// something like font-size: max(30vw, 30px);
 
 
 

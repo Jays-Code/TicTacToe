@@ -16,14 +16,16 @@ body{
     
     background:#efefef;
     border:solid 10px #333;
-    height:76px;
+    height:76vh;
     //height: 76vh;
-    min-height: 76%;
+    //min-height: 76%;
     //max-height: 50%;
 }
 
 .canvas td
 {
+    //table-layout: fixed;
+    //display: inline-block;
     overflow: hidden;
     width:10vw;
     height:8vh;
@@ -33,8 +35,8 @@ body{
     text-align:center;
     //font-size:360%;
 
-    //font-size:9vh;
-    font-size: max(10vh, 10px);
+    font-size:9vh;
+    //font-size: max(10vh, 10px);
 
     //font-size:40pt;
     border-radius:10px;
@@ -43,29 +45,7 @@ body{
     position: relative;
     animation: makeItMove 2s 0s;
 }
-/* td adaptations for smaller devices */
-@media (max-width:425px){
-    .canvas td {
-        width:6vw;
-        font-size: 6vh;
-        //background:red;
-        border: solid 6px rgba(73, 7, 94, 0.616);
-        padding: 0; 
-        margin: 0;
-    }
-}
-        
-@media (max-height:550px){
-    .canvas td {
-        height: 1vh;
-        font-size: 7vh;
-        //background: pink;
-        border: solid 6px rgba(73, 7, 94, 0.616);
-        padding: 0; 
-        margin: 0;
-    }
-}
-  
+
   @keyframes makeItMove {
     0%   {top: 0px;}
     25%  {top: 6px;}
@@ -76,7 +56,8 @@ body{
 
 .canvas tr 
 {
-    background: red;
+    //background: red;
+    //table-layout: fixed;
 }
 
 .canvas td:hover
@@ -240,7 +221,7 @@ body
 .canvas #gameBoard 
 {
     //border-collapse: collapse;
-    height:60%;
+    height:60vh;
     //max-height:10%;
     color:rgb(31, 26, 32);
     //overflow:hidden;
@@ -322,34 +303,55 @@ body
 }
 
 
-
-/* gameBoard adaptations for smaller devices */
-/*
+/* Adaptations for smaller devices */
 @media (max-width:425px){
-    .canvas #gameBoard {
+    .canvas td {
         width:6vw;
         font-size: 6vh;
-    background:red;
+        //background:red;
+        border: solid 6px rgba(73, 7, 94, 0.616);
+        padding: 0; 
+        margin: 0;
+    }
+    .canvas #gameBoard {
+        //width: ;
+        //background:red;
         border: solid 6px rgba(73, 7, 94, 0.616);
         
     }
 }
         
 @media (max-height:550px){
-    .canvas #gameBoard {
-        height: 100%;
-        font-size: 7vh;
+    .canvas td {
+        
+        height: 15vh;
+        font-size: 6vh;
         //background: pink;
         border: solid 6px rgba(73, 7, 94, 0.616);
+        padding: 0; 
+        margin: 0;
+    }
+    .canvas #gameBoard {
+        
+        height: 2vh;
+        //background: pink;
+        border: solid 6px rgba(73, 7, 94, 0.616);
+        padding: 1.5vh;
+        margin: 0;
+    }
+    .modal {
+        padding: 10px;
     }
 }
-  */
+  
+
+        
+
+
+  
 
 
 
-
-//try adding max-height and max-width properties to gameBoard and td so that they
-//scale properly on your phone
 
 
 //current issue: td won't get smaller than the font size; need to implement max
@@ -357,8 +359,6 @@ body
 
 
 
-//new idea: do one media query for smaller devices and make a display for them
-//leave main design as is, don't try to make everything fully scalable\
 
 
 

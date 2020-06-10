@@ -10,15 +10,17 @@ body{
 }
 
 
+
 .canvas
 {
+    
     background:#efefef;
     border:solid 10px #333;
-    height:76vh;
-    //height: 76%;
+    height:76px;
+    //height: 76vh;
+    min-height: 76%;
     //max-height: 50%;
 }
-
 
 .canvas td
 {
@@ -41,6 +43,28 @@ body{
     position: relative;
     animation: makeItMove 2s 0s;
 }
+/* td adaptations for smaller devices */
+@media (max-width:425px){
+    .canvas td {
+        width:6vw;
+        font-size: 6vh;
+        //background:red;
+        border: solid 6px rgba(73, 7, 94, 0.616);
+        padding: 0; 
+        margin: 0;
+    }
+}
+        
+@media (max-height:550px){
+    .canvas td {
+        height: 1vh;
+        font-size: 7vh;
+        //background: pink;
+        border: solid 6px rgba(73, 7, 94, 0.616);
+        padding: 0; 
+        margin: 0;
+    }
+}
   
   @keyframes makeItMove {
     0%   {top: 0px;}
@@ -50,6 +74,10 @@ body{
     100% {top: 0px;}
 }
 
+.canvas tr 
+{
+    background: red;
+}
 
 .canvas td:hover
 {
@@ -74,6 +102,7 @@ body{
     float:left;
     text-align:center;
     width: 25%;
+    //width: 15.5%  --- try this for media query for phones
     color: rgb(90, 29, 131);
 }
 
@@ -210,8 +239,9 @@ body
 
 .canvas #gameBoard 
 {
-    height:60vh;
-    max-height:10%;
+    //border-collapse: collapse;
+    height:60%;
+    //max-height:10%;
     color:rgb(31, 26, 32);
     //overflow:hidden;
     transition:transform 0.3s ease-out; // note that we're transitioning transform, not height!
@@ -232,8 +262,7 @@ body
     padding:15px;
     cursor:pointer;
     transition:box-shadow 0.2s ease-out;
-        
-       
+           
       }
 
 
@@ -289,20 +318,33 @@ body
 	font-size: 1.5rem;
 	font-weight: bold;
 	letter-spacing: 2px;
-    transition: all linear .2s;
-    
-
-
-
-
-
-
-
-
-    
-        
-      
+    transition: all linear .2s;      
 }
+
+
+
+/* gameBoard adaptations for smaller devices */
+/*
+@media (max-width:425px){
+    .canvas #gameBoard {
+        width:6vw;
+        font-size: 6vh;
+    background:red;
+        border: solid 6px rgba(73, 7, 94, 0.616);
+        
+    }
+}
+        
+@media (max-height:550px){
+    .canvas #gameBoard {
+        height: 100%;
+        font-size: 7vh;
+        //background: pink;
+        border: solid 6px rgba(73, 7, 94, 0.616);
+    }
+}
+  */
+
 
 
 
@@ -315,7 +357,8 @@ body
 
 
 
-
+//new idea: do one media query for smaller devices and make a display for them
+//leave main design as is, don't try to make everything fully scalable\
 
 
 

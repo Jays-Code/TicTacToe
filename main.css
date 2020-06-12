@@ -104,6 +104,8 @@ body{
     border: 10vw 10vh red;
     animation: moveModal 8s 0s, fadeOut 8s 0s; 
     animation-fill-mode: forwards;
+    font: 600 18px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+      background-image: linear-gradient(to right,#7f53ac 0,#657ced 100%);
      
 }
     @keyframes fadeOut {

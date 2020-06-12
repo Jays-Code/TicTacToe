@@ -17,6 +17,7 @@ let gameCount = 0;
 
 
 function drawBoard() {
+    makeClickable()
     if (player1points + player2points > 0 && gameCount > 0) {
         console.log("gameCount: " + gameCount)
         getModal[0].style.display = "block"
@@ -37,7 +38,7 @@ function drawBoard() {
     }
 
     //table and row creation
-//console.table(gameGrid)
+    //console.table(gameGrid)
     for (let i = 0; i < 3; i++) {
         let row = document.createElement("tr")
         for (let x = 0; x < 3; x++) {
@@ -108,28 +109,26 @@ function drawBoard() {
 
                     //setTimeout(function () { removeModal(); }, 8000);
                     //drawBoard();
-                    setTimeout(function () { drawBoard(); }, 3000);
+                    setTimeout(function () { drawBoard(); }, 2000);
 
                 }
                 else { //if it runs checkWin function and winning condition not met, this is ran.
                     if (activePlayer == 0)
                         activePlayer = 1;
                     else (activePlayer = 0)
-                    
+
                     let removeClickablility = () => {
                         this.removeEventListener('click', arguments.callee);
                     }
-                  
-                        removeClickablility();
-                        console.log("removeClickability function is ran")
-                    
+
+
                 }
             };
 
             let addClickability = () => column.addEventListener('click', selectionHandler);
-                    setTimeout(function () { addClickability(); }, 2500);
-                    setTimeout(function () {console.log("squares are now clickable"); }, 2500);
-                    //addClickability();
+            //setTimeout(function () { addClickability(); }, 2000);
+            //setTimeout(function () {console.log("squares are now clickable"); }, 2500);
+            addClickability();
 
             row.appendChild(column);
             counter++
@@ -149,7 +148,7 @@ let playerSelections = new Array();
 
 checkWin = (playerSelectionsContainer) => {
     let win = false;
-    
+
 
     playerSelectionsContainer = playerSelections
     if (activePlayer == 0) {
@@ -187,7 +186,7 @@ checkWin = (playerSelectionsContainer) => {
 
             if (setFound == true) {
                 win = true;
-                console.log("Is there a win: " + win)
+            
                 break;
             }
         }
@@ -215,17 +214,15 @@ getModal[0].classList.add["modal"]
 let showModal = () => {
 
 
-    //let getModalContent = document.getElementsByClassName("modalContent")
-    //console.log(getModal)
+
     getModal[0].classList.add["modal"]
-    //getModalContent[0].classList.add("modalContent")
+
 
 
 
 
     getModal[0].style.display = "block"
-    //console.log("modal is triggered");
-    console.log("activePlayer is: " + activePlayer)
+    //console.log("activePlayer is: " + activePlayer)
 
     if (activePlayer == 1) {
         getModal[0].innerHTML = ("Player 2 has won!");
@@ -234,11 +231,7 @@ let showModal = () => {
 
     if (activePlayer == 0 && !checkWin()) {
 
-        /*
-        if (player1points + player2points == 0 && gameCount > 0) {
-            console.log("gameCount: " + gameCount)
-            getModal[0].style.display = "block"
-            */
+
         getModal[0].style.display = "block"
         getModal[0].innerHTML = ("A draw has occured. Board reset!")
 
@@ -247,42 +240,36 @@ let showModal = () => {
     else if
         (activePlayer == 0) {
         getModal[0].innerHTML = ("Player 1 has won!");
-        //console.log(getModalContent[0].innerHTML)
         console.log(getModal[0].innerHTML)
         //console.log(activePlayer)
     }
 
 
     return getModal
-    /*
-    theModal = getModal
-    console.log(theModal)
-    return theModal
-    */
+
 }
 
 
 
 makeClickable = () => {
-        gameGrid.style.pointerEvents = "auto";
-    }
+    gameGrid.style.pointerEvents = "auto";
+}
 makeUnclickable = () => {
     gameGrid.style.pointerEvents = "none";
 }
 
 
-makeUnclickable()
+
 
 winnerShown = () => {
 
 
     //removing the modal
     removeModal = () => {
-        //let getModal = document.getElementsByClassName("modal")
+
         if (player1points + player2points > 0) {
             getModal[0].style.display = "none"
-            //getModal[0].classList.remove("modal")
-            //console.log("modal is removed")
+
         }
 
     }
@@ -297,14 +284,11 @@ winnerShown = () => {
         getPlayerElement("player2score").classList.remove('selected')
 
     }
-    //drawBoard()
-    //showModal();
+    makeUnclickable()
     resetBoard();
-    //setTimeout(function () { resetBoard(); }, 500);
+
     setTimeout(function () { removeModal(); }, 8000);
 
-
-    //removeModal();
 
 }
 
@@ -321,9 +305,8 @@ loadAnswers = () => {
 }
 
 
-//setTimeout(() => {
-    drawBoard();
-//}, 3000);
+drawBoard();
+
 
 
 
@@ -357,10 +340,6 @@ loadAnswers = () => {
 
 
 
-
-//find out whats actually triggering board reset (innerhtml specifically) and
-//put setTimeout of 2s on that function
-//remove all setTimeouts if times don't sync up properly.
 
 //https://www.youtube.com/watch?v=4UvWpjSRrm0 CSS gradient morphing animation
 

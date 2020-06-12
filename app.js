@@ -127,8 +127,8 @@ function drawBoard() {
             };
 
             let addClickability = () => column.addEventListener('click', selectionHandler);
-                    setTimeout(function () { addClickability(); }, 3000);
-                    console.log("addClickability function is ran")
+                    setTimeout(function () { addClickability(); }, 2500);
+                    setTimeout(function () {console.log("squares are now clickable"); }, 2500);
                     //addClickability();
 
             row.appendChild(column);
@@ -224,7 +224,7 @@ let showModal = () => {
 
 
     getModal[0].style.display = "block"
-    console.log("modal is triggered");
+    //console.log("modal is triggered");
     console.log("activePlayer is: " + activePlayer)
 
     if (activePlayer == 1) {
@@ -261,6 +261,18 @@ let showModal = () => {
     */
 }
 
+
+
+makeClickable = () => {
+        gameGrid.style.pointerEvents = "auto";
+    }
+makeUnclickable = () => {
+    gameGrid.style.pointerEvents = "none";
+}
+
+
+makeUnclickable()
+
 winnerShown = () => {
 
 
@@ -270,7 +282,7 @@ winnerShown = () => {
         if (player1points + player2points > 0) {
             getModal[0].style.display = "none"
             //getModal[0].classList.remove("modal")
-            console.log("modal is removed")
+            //console.log("modal is removed")
         }
 
     }
@@ -287,8 +299,8 @@ winnerShown = () => {
     }
     //drawBoard()
     //showModal();
-    //resetBoard();
-    setTimeout(function () { resetBoard(); }, 500);
+    resetBoard();
+    //setTimeout(function () { resetBoard(); }, 500);
     setTimeout(function () { removeModal(); }, 8000);
 
 

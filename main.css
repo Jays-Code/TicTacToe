@@ -184,6 +184,7 @@ body
 
 .canvas #gameBoard 
 {
+    //pointer-events: none;
     width: 50%;
     height:60vh;
     color:rgb(31, 26, 32);

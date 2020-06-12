@@ -4,7 +4,8 @@ body{
     background-color:  #112957;
     -webkit-tap-highlight-color: transparent;     
     height: 100vh;
-    max-height: 100vh;
+    max-height: -webkit-fill-available;
+    //max-height: 100vh;
     width: 100vw;
     max-width: 100vw;
 }
@@ -99,9 +100,10 @@ body{
     
     margin: 0 auto;
     background-color: rgb(245, 78, 175);
-    padding:30px;
+    padding:10px;
     display:none;
     border: 10vw 10vh red;
+    border-radius: 15px;
     animation: moveModal 8s 0s, fadeOut 8s 0s; 
     animation-fill-mode: forwards;
     font: 600 18px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;

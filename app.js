@@ -117,9 +117,10 @@ function drawBoard() {
                         activePlayer = 1;
                     else (activePlayer = 0)
 
-                    let removeClickablility = () => {
+                    
                         this.removeEventListener('click', arguments.callee);
-                    }
+                
+                    
 
 
                 }
